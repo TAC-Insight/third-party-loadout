@@ -121,6 +121,73 @@ GET /silos
 ]
 ```
 
+### Start Transaction
+
+This endpoint is called when a new loadout transaction is started in the Fast-Weigh UI.
+
+This transaction will be monitored for completion. 
+
+**Request**:
+
+```http
+POST /transaction/{transactionId}
+```
+
+**Response**:
+
+```json
+{
+  "transactionId": "0000-000...",  // string -- uuid/guid
+  "truckId": "1234",               // string
+  "haulerId": "ACME",              // string
+  "productId": "10A",              // string
+  "maxWeightLbs": 0,               // number
+  "maxWeightTons": 0.0,            // number
+  "maxWeightKg": 0,                // number
+  "maxWeightTonnes": 0.0,          // number
+  "targetGrossWeightLbs": 0,       // number
+  "targetGrossWeightTons": 0.0,    // number
+  "targetGrossWeightKg": 0,        // number
+  "targetGrossWeightTonnes": 0.0,  // number
+  "numberOfDrops": 2,              // number
+  "dropSplit": [60,40]             // array of numbers, summing to 100
+}
+```
+
+### Transaction Status
+
+This endpoint is called to check the status of an individual transaction.
+
+The response should indicated whether the drop is in progress, complete, in an error state, or has been canceled. 
+
+If the drop is in an error or canceled state, the reponse `message` field should detail the reason.
+
+**Request**:
+
+```http
+GET /transaction/{transactionId}
+```
+
+**Response**:
+
+```json
+{
+  "transactionId": "0000-000...",  // string -- uuid/guid
+  "truckId": "1234",               // string
+  "haulerId": "ACME",              // string
+  "productId": "10A",              // string
+  "numberOfDrops": 2,              // number
+  "dropSplit": [60,40]             // array of numbers, summing to 100
+  "status": "IN_PROGRESS"          // string -- ENUM: "IN_PROGRESS" | "COMPLETE" | "ERROR" | "CANCELED"
+  "unitOfMeasure": "LBS"           // string -- ENUM: 'TONS' | 'LBS' | 'KGS' | 'TONNES' 
+  "amountDropped: [28000, 16000]      // number[] -- array of completed drops
+  "grossWeight: 80000              // number -- while in progress, the current gross. when complete, the final gross
+}
+```
+
+
+
+
 
 
 
