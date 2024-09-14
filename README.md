@@ -53,11 +53,10 @@ In Fast-Weigh, each silo must be assigned a **Base URL** and **Silo ID**. These 
 
 **Silo ID**: The unique identifier for the silo. This is used to identify the silo in the API requests.
 
-**API Key**: An optional API key that can be provided if the third-party API requires authentication. This key is passed in the `x-api-key` request header, and as a query parameter in the request URL with every request. Ex:
+**API Key**: An optional API key that can be provided if the third-party API requires authentication. This key is passed as a query parameter in the request URL with every request. Ex:
 
 ```http
 GET /serverstatus?key=supersecretkey
-x-api-key: supersecretkey
 ```
 
 ## Error Handling
