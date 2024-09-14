@@ -152,6 +152,7 @@ GET /silos
     "isActive": true,          // boolean
     "isSafeForLoadout": true,  // boolean -- this field should come from the 3rd party's own safety checks
     "isFilling": true,         // boolean -- optional: silo is currently being filled with inventory
+    "productId": "10A",        // string
     "currentInventory": 0.0,   // number
     "unitOfMeasure": "TONS"    // string -- ENUM: 'TONS' | 'LBS' | 'KGS' | 'TONNES' 
   }
