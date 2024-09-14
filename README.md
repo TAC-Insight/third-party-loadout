@@ -63,7 +63,7 @@ GET /serverstatus?key=supersecretkey
 
 Errors should be returned with a 400 or 500 level HTTP status code and a JSON object with a message property. The message will be displayed in the Fast-Weigh UI and should provide a human readable description of the error.
 
-```json
+```jsonc
 {
   "message": "Error message here" // string
 }
