@@ -17,6 +17,24 @@ This spec is designed as a RESTful API, with endpoints that accept and return JS
 
 The Fast-Weigh 3rd Party Loadout spec is designed to allow interoperability between the Fast-Weigh UI and any 3rd party loadout that implements the spec.
 
+There are only a few required calls to implement:
+
+```http 
+GET /serverstatus
+```
+
+```http 
+GET /silos
+```
+
+```http 
+POST /transaction/{transactionId}
+```
+
+```http
+GET /transaction/{transactionId}
+```
+
 Once the configuration is done, a typical loadout looks something like this:
 
 **FW**: Fast-Weigh / **3P**: 3rd party loadout
@@ -134,7 +152,7 @@ GET /silos
     "id": "silo1"              // string -- unique id for the silo
     "isActive": true,          // boolean
     "isSafeForLoadout": true,  // boolean -- this field should come from the 3rd party's own safety checks
-    "isFilling: true,          // boolean -- optional: silo is currently being filled with inventory
+    "isFilling": true,         // boolean -- optional: silo is currently being filled with inventory
     "currentInventory": 0.0,   // number
     "unitOfMeasure": "TONS"    // string -- ENUM: 'TONS' | 'LBS' | 'KGS' | 'TONNES' 
   }
@@ -200,8 +218,8 @@ GET /transaction/{transactionId}
   "dropSplit": [60,40]             // array of numbers, summing to 100
   "status": "IN_PROGRESS"          // string -- ENUM: "IN_PROGRESS" | "COMPLETE" | "ERROR" | "CANCELED"
   "unitOfMeasure": "LBS"           // string -- ENUM: 'TONS' | 'LBS' | 'KGS' | 'TONNES' 
-  "amountDropped: [28000, 16000]      // number[] -- array of completed drops
-  "grossWeight: 80000              // number -- while in progress, the current gross. when complete, the final gross
+  "amountDropped": [28000, 16000]  // number[] -- array of completed drops
+  "grossWeight": 80000             // number -- while in progress, the current gross. when complete, the final gross
 }
 ```
 
