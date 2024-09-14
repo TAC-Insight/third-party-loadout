@@ -72,7 +72,7 @@ Errors should be returned with a 400 or 500 level HTTP status code and a JSON ob
 ## API Implementation Notes
 
 > [!IMPORTANT]
-> The Fast-Weigh application can be run on any network IP and runs in the browser. Your API Implementation MUST allow `GET` and `POST` requests from any origin.
+> **CORS**: The Fast-Weigh application can be run on any network IP and runs in the browser. Your API Implementation MUST allow `GET` and `POST` requests from any origin.
 
 **Helpful Links**:
 
