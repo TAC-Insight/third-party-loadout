@@ -7,6 +7,26 @@ This spec is designed as a RESTful API, with endpoints that accept and return JS
 > [!NOTE]
 > All payloads below are shown with type annotations. These annotations should not be included in the actual request or response payloads.
 
+* [Overview](#overview)
+* [Integration Setup](#integration-setup)
+* [Error Handling](#error-handling)
+* [API Implementation Notes](#api-implementation-notes)
+* [Required Endpoints](#required-endpoints)
+
+## Overview
+
+The Fast-Weigh 3rd Party Loadout spec is designed to allow interoperability between the Fast-Weigh UI and any 3rd party loadout that implements the spec.
+
+Once the configuration is done, a typical loadout looks something like this:
+
+**FW**: Fast-Weigh / **3P**: 3rd party loadout
+1) FW: User preps the load parameters (Truck, customer, order, # of drops, etc)
+2) FW -> 3P: User sends the parameters to 3rd party loadout
+3) 3P: User performs the loadout drops
+4) 3P: 3rd party updates transaction status to complete
+5) FW: Polls for any non-"IN_PROGRESS" status
+6) FW: Once loadout is complete, generate ticket
+
 ## Integration Setup
 
 In Fast-Weigh, each silo must be assigned a **Base URL** and **Silo ID**. These are entered in the Fast-Weigh Server Settings. An optional API Key can be provided if authentication is required.
@@ -28,7 +48,7 @@ Errors should be returned with a 400 or 500 level HTTP status code and a JSON ob
 
 ```json
 {
-	"message": "Error message here" // string
+  "message": "Error message here" // string
 }
 ```
 
