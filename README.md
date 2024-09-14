@@ -145,7 +145,7 @@ GET /silos
 
 **Response**:
 
-```json
+```jsonc
 [
   {
     "id": "silo1"              // string -- unique id for the silo
@@ -170,25 +170,26 @@ This transaction will be monitored for completion.
 POST /transaction/{transactionId}
 ```
 
-**Response**:
+**Request Body**:
 
-```json
+```jsonc
 {
   "transactionId": "0000-000...",  // string -- uuid/guid
   "truckId": "1234",               // string
   "haulerId": "ACME",              // string
   "productId": "10A",              // string
-  "maxWeightLbs": 0,               // number
-  "maxWeightTons": 0.0,            // number
-  "maxWeightKg": 0,                // number
-  "maxWeightTonnes": 0.0,          // number
-  "targetGrossWeightLbs": 0,       // number
-  "targetGrossWeightTons": 0.0,    // number
-  "targetGrossWeightKg": 0,        // number
-  "targetGrossWeightTonnes": 0.0,  // number
+  "unitOfMeasure": "TONS"          // string -- ENUM: 'TONS' | 'LBS' | 'KGS' | 'TONNES' 
+  "maxWeight": 0,                  // number
+  "targetGross": 0.0,              // number
   "numberOfDrops": 2,              // number
-  "dropSplit": [60,40]             // array of numbers, summing to 100
+  "dropSplit": [60,40]             // number[] -- drop percentages: array of numbers, summing to 100
 }
+```
+
+**Response**:
+
+```http
+200 OK
 ```
 
 ### Transaction Status
@@ -207,7 +208,7 @@ GET /transaction/{transactionId}
 
 **Response**:
 
-```json
+```jsonc
 {
   "transactionId": "0000-000...",  // string -- uuid/guid
   "truckId": "1234",               // string
@@ -217,7 +218,7 @@ GET /transaction/{transactionId}
   "dropSplit": [60,40]             // array of numbers, summing to 100
   "status": "IN_PROGRESS"          // string -- ENUM: "IN_PROGRESS" | "COMPLETE" | "ERROR" | "CANCELED"
   "unitOfMeasure": "LBS"           // string -- ENUM: 'TONS' | 'LBS' | 'KGS' | 'TONNES' 
-  "amountDropped": [28000, 16000]  // number[] -- array of completed drops
+  "amountDropped": [28000, 16000]  // number[] -- array of completed drop weights
   "grossWeight": 80000             // number -- while in progress, the current gross. when complete, the final gross
 }
 ```
