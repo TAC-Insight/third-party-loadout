@@ -182,6 +182,7 @@ POST /transaction/{transactionId}
   "unitOfMeasure": "LBS"           // string -- ENUM: 'TONS' | 'LBS' | 'KGS' | 'TONNES' 
   "maxWeight": 80000,              // number
   "targetGross": 78000,            // number
+  "tareWeight": 20000,             // number -- current stored tare for the truck
   "numberOfDrops": 2,              // number
   "dropSplit": [60,40]             // number[] -- drop percentages: array of numbers, summing to 100
 }
