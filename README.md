@@ -216,8 +216,9 @@ GET /transaction/{transactionId}
   "haulerId": "ACME",              // string
   "productId": "10A",              // string
   "numberOfDrops": 2,              // number
-  "dropSplit": [60,40]             // array of numbers, summing to 100
+  "dropSplit": [60,40]             // number[] -- array of numbers summing to 100 (percentages)
   "status": "IN_PROGRESS"          // string -- ENUM: "IN_PROGRESS" | "COMPLETE" | "ERROR" | "CANCELED"
+  "message": "Drop in progress"    // string
   "unitOfMeasure": "LBS"           // string -- ENUM: 'TONS' | 'LBS' | 'KGS' | 'TONNES' 
   "amountDropped": [28000, 16000]  // number[] -- array of completed drop weights
   "grossWeight": 80000             // number -- while in progress, the current gross. when complete, the final gross
