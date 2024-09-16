@@ -149,7 +149,8 @@ GET /silos
 [
   {
     "id": "silo1"              // string -- unique id for the silo
-    "isActive": true,          // boolean
+    "isActive": true,          // boolean -- is silo active for loadout?
+    "currentTransaction":      // string -- uuid/guid: if silo is in-use, returns the current transactionId
     "isSafeForLoadout": true,  // boolean -- this field should come from the 3rd party's own safety checks
     "isFilling": true,         // boolean -- optional: silo is currently being filled with inventory
     "productId": "10A",        // string
@@ -176,10 +177,11 @@ POST /transaction/{transactionId}
 ```jsonc
 {
   "transactionId": "0000-000...",  // string -- uuid/guid
+  "siloId": "silo1",               // string
   "truckId": "1234",               // string
   "haulerId": "ACME",              // string
   "productId": "10A",              // string
-  "unitOfMeasure": "LBS"           // string -- ENUM: 'TONS' | 'LBS' | 'KGS' | 'TONNES' 
+  "unitOfMeasure": "LBS",          // string -- ENUM: 'TONS' | 'LBS' | 'KGS' | 'TONNES' 
   "maxWeight": 80000,              // number
   "targetGross": 78000,            // number
   "tareWeight": 20000,             // number -- current stored tare for the truck
@@ -217,13 +219,13 @@ GET /transaction/{transactionId}
   "haulerId": "ACME",              // string
   "productId": "10A",              // string
   "numberOfDrops": 2,              // number
-  "dropSplit": [60,40]             // number[] -- array of numbers summing to 100 (percentages)
-  "status": "IN_PROGRESS"          // string -- ENUM: "IN_PROGRESS" | "COMPLETE" | "ERROR" | "CANCELED"
-  "message": "Drop in progress"    // string
-  "unitOfMeasure": "LBS"           // string -- ENUM: 'TONS' | 'LBS' | 'KGS' | 'TONNES' 
-  "amountDropped": [28000, 16000]  // number[] -- array of completed drop weights
-  "grossWeight": 80000             // number -- while in progress, the current gross. when complete, the final gross
-  "tareWeight": 20000              // number
+  "dropSplit": [60,40],            // number[] -- array of numbers summing to 100 (percentages)
+  "status": "IN_PROGRESS",         // string -- ENUM: "IN_PROGRESS" | "COMPLETE" | "ERROR" | "CANCELED"
+  "message": "Drop in progress",   // string
+  "unitOfMeasure": "LBS",          // string -- ENUM: 'TONS' | 'LBS' | 'KGS' | 'TONNES' 
+  "amountDropped": [28000, 16000], // number[] -- array of completed drop weights
+  "grossWeight": 80000,            // number -- while in progress, the current gross. when complete, the final gross
+  "tareWeight": 20000,             // number
   "netWeight": 60000               // number
 }
 ```
