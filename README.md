@@ -135,7 +135,7 @@ GET /serverstatus
 
 ### Silo Status
 
-This endpoints returns an array of the current status of all silos. It should return inventory information, as well as the loadout status.
+This endpoint returns an array of the current status of all silos. It should return inventory information, as well as the loadout status.
 
 **Request**:
 
