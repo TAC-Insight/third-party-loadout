@@ -176,17 +176,21 @@ POST /transaction/{transactionId}
 
 ```jsonc
 {
-  "transactionId": "0000-000...",  // string -- uuid/guid
-  "siloId": "silo1",               // string
-  "truckId": "1234",               // string
-  "haulerId": "ACME",              // string
-  "productId": "10A",              // string
-  "unitOfMeasure": "LBS",          // string -- ENUM: 'TONS' | 'LBS' | 'KGS' | 'TONNES' 
-  "maxWeight": 80000,              // number
-  "targetGross": 78000,            // number
-  "tareWeight": 20000,             // number -- current stored tare for the truck
-  "numberOfDrops": 2,              // number
-  "dropSplit": [60,40]             // number[] -- drop percentages: array of numbers, summing to 100
+  "transactionId": "0000-000...",   // string -- uuid/guid
+  "siloId": "silo1",                // string
+  "truckId": "1234",                // string
+  "haulerId": "ACME",               // string
+  "customerId": "WEST01",           // string
+  "customerName": "Western Paving", // string
+  "jobId": 123,                     // number
+  "jobName": "Western Paving Job",  // string
+  "productId": "10A",               // string
+  "unitOfMeasure": "LBS",           // string -- ENUM: 'TONS' | 'LBS' | 'KGS' | 'TONNES' 
+  "maxWeight": 80000,               // number
+  "targetGross": 78000,             // number
+  "tareWeight": 20000,              // number -- current stored tare for the truck
+  "numberOfDrops": 2,               // number
+  "dropSplit": [60,40]              // number[] -- drop percentages: array of numbers, summing to 100
 }
 ```
 
@@ -214,19 +218,23 @@ GET /transaction/{transactionId}
 
 ```jsonc
 {
-  "transactionId": "0000-000...",  // string -- uuid/guid
-  "truckId": "1234",               // string
-  "haulerId": "ACME",              // string
-  "productId": "10A",              // string
-  "numberOfDrops": 2,              // number
-  "dropSplit": [60,40],            // number[] -- array of numbers summing to 100 (percentages)
-  "status": "IN_PROGRESS",         // string -- ENUM: "IN_PROGRESS" | "COMPLETE" | "ERROR" | "CANCELED"
-  "message": "Drop in progress",   // string
-  "unitOfMeasure": "LBS",          // string -- ENUM: 'TONS' | 'LBS' | 'KGS' | 'TONNES' 
-  "amountDropped": [28000, 16000], // number[] -- array of completed drop weights
-  "grossWeight": 80000,            // number -- while in progress, the current gross. when complete, the final gross
-  "tareWeight": 20000,             // number
-  "netWeight": 60000               // number
+  "transactionId": "0000-000...",   // string -- uuid/guid
+  "truckId": "1234",                // string
+  "haulerId": "ACME",               // string
+  "customerId": "WEST01",           // string
+  "customerName": "Western Paving", // string
+  "jobId": 123,                     // number
+  "jobName": "Western Paving Job",  // string
+  "productId": "10A",               // string
+  "numberOfDrops": 2,               // number
+  "dropSplit": [60,40],             // number[] -- array of numbers summing to 100 (percentages)
+  "status": "IN_PROGRESS",          // string -- ENUM: "IN_PROGRESS" | "COMPLETE" | "ERROR" | "CANCELED"
+  "message": "Drop in progress",    // string
+  "unitOfMeasure": "LBS",           // string -- ENUM: 'TONS' | 'LBS' | 'KGS' | 'TONNES' 
+  "amountDropped": [28000, 16000],  // number[] -- array of completed drop weights
+  "grossWeight": 80000,             // number -- while in progress, the current gross. when complete, the final gross
+  "tareWeight": 20000,              // number
+  "netWeight": 60000                // number
 }
 ```
 
