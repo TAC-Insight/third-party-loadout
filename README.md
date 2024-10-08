@@ -182,7 +182,7 @@ POST /transaction/{transactionId}
   "haulerId": "ACME",               // string
   "customerId": "WEST01",           // string
   "customerName": "Western Paving", // string
-  "jobId": 123,                     // number
+  "jobId": "JOB123",                // string
   "jobName": "Western Paving Job",  // string
   "productId": "10A",               // string
   "unitOfMeasure": "LBS",           // string -- ENUM: 'TONS' | 'LBS' | 'KGS' | 'TONNES' 
@@ -223,7 +223,7 @@ GET /transaction/{transactionId}
   "haulerId": "ACME",               // string
   "customerId": "WEST01",           // string
   "customerName": "Western Paving", // string
-  "jobId": 123,                     // number
+  "jobId": "JOB123",                // string
   "jobName": "Western Paving Job",  // string
   "productId": "10A",               // string
   "numberOfDrops": 2,               // number
