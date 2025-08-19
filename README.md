@@ -148,9 +148,9 @@ GET /silos
 ```jsonc
 [
   {
-    "id": "silo1"              // string -- unique id for the silo
+    "id": "silo1",             // string -- unique id for the silo
     "isActive": true,          // boolean -- is silo active for loadout?
-    "currentTransaction":      // string -- uuid/guid: if silo is in-use, returns the current transactionId
+    "currentTransaction": "",  // string -- uuid/guid: if silo is in-use, returns the current transactionId
     "isSafeForLoadout": true,  // boolean -- this field should come from the 3rd party's own safety checks
     "isFilling": true,         // boolean -- optional: silo is currently being filled with inventory
     "productId": "10A",        // string
